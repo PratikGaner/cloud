@@ -1,0 +1,58 @@
+/*
+ * Copyright (c) 2022 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Apache License 2.0 which is available at
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+ 
+syntax = "proto3";
+
+package bfb.softwareupdate.v1;
+
+message BfbHeader {
+
+    /*
+     * If this message is sent in the context of an activity (a functional process with a defined lifecycle tracked by
+     * the backend), the ID of that activity shall be put into the activity ID field. If this field is null or missing,
+     * the message is not part of an activity (e.g. a status report cyclically initiated by the device)
+     */
+    string activity_id = 1;
+
+    /*
+     * Increased for each message sent by the device to enable reliable ordering of messages in the backend
+     */
+    uint32 device_sequence_counter = 2;
+
+    /*
+     * Timestamp at the time of creation of the message.
+     * Number of milliseconds that have elapsed since the Unix epoch (00:00:00 UTC on 1 January 1970)
+     */
+    uint64 timestamp = 3;
+
+    /*
+     * Serialization format used by this message
+     */
+    string serialization = 4;
+
+    /*
+     * The BfB API version implemented by this message
+     */
+    uint32 version = 5;
+
+    /*
+     * Denotes the API section the message belongs to
+     */
+    string api_section = 6;
+
+    /*
+     * Denotes the API message the message represents. Valid values depend on the API section field, and are defined
+     * in the respective API chapters
+     */
+    string message_type = 7;
+}

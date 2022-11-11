@@ -1,0 +1,138 @@
+{
+	"messageMappings": {
+		"telemetry": {
+			"1": {
+				"container.created": {
+					"protoFile": "../internal/testdata/messages/container_created.proto",
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/created",
+						"path": "/outbox/messages/created"
+					}
+				},
+				"container.removed": {
+					"protoFile": "../internal/testdata/messages/container_removed.proto",
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/removed",
+						"path": "/outbox/messages/removed"
+					}
+				},
+				"container.stateChanged": {
+					"protoFile": "../internal/testdata/messages/container_state_changed.proto",
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/stateChanged",
+						"path": "/outbox/messages/stateChanged"
+					}
+				},
+				"container.manifest": {
+					"protoFile": "../internal/testdata/messages/manifest_state.proto",
+					"dittoMapping": {
+						"topic": "edge:containers/things/twin/commands/modify",
+						"path": "/features/ContainerOrchestrator/properties/state/status"
+					}
+				},
+				"simple.message": {
+					"protoFile": "../internal/testdata/messages/simple_message.proto",
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/simplySend",
+						"path": "/outbox/messages/simplySend"
+					}
+				},
+				"single.field.array": {
+					"protoFile": "../internal/testdata/messages/single_field_array.proto",
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/singleFieldArray",
+						"path": "/outbox/messages/singleFieldArray"
+					}
+				},
+				"single.field.bool.array": {
+					"protoFile": "../internal/testdata/messages/single_field_bool_array.proto",
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/singleFieldBoolArray",
+						"path": "/outbox/messages/singleFieldBoolArray"
+					}
+				},
+				"single.field.int.array": {
+					"protoFile": "../internal/testdata/messages/single_field_int_array.proto",
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/singleFieldIntArray",
+						"path": "/outbox/messages/singleFieldIntArray"
+					}
+				},
+				"single.field.string.array": {
+					"protoFile": "../internal/testdata/messages/single_field_string_array.proto",
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/singleFieldStringArray",
+						"path": "/outbox/messages/singleFieldStringArray"
+					}
+				},
+				"no.topic": {
+					"protoFile": "../internal/testdata/messages/simple_message.proto",
+					"dittoMapping": {
+						"path": "/outbox/messages/noTopic"
+					}
+				},
+				"no.path": {
+					"protoFile": "../internal/testdata/messages/simple_message.proto",
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/noPath"
+					}
+				},
+				"non.existing.descriptor": {
+					"protoFile": "../internal/testdata/messages/non_existing.proto",
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/noDescriptor"
+					}
+				}
+			}
+		},
+		"command": {
+			"container.manifest": {
+				"protoFile": "../internal/testdata/messages/manifest_apply.proto",
+				"dittoMapping": {
+					"thing": "edge:containers",
+					"action": "apply",
+					"path": "/features/ContainerOrchestrator/inbox/messages/apply"
+				}
+			},
+			"simple.message": {
+				"protoFile": "../internal/testdata/messages/simple_message.proto",
+				"dittoMapping": {
+					"thing": "edge:containers",
+					"action": "send",
+					"path": "/features/ContainerOrchestrator/inbox/messages/send"
+				}
+			},
+			"unsupported.field": {
+				"protoFile": "../internal/testdata/messages/unsupported.proto",
+				"dittoMapping": {
+					"thing": "edge:containers",
+					"action": "unsupported",
+					"path": "/features/ContainerOrchestrator/inbox/messages/unsupported"
+				}
+			},
+			"message.no.proto.file": {
+				"dittoMapping": {
+					"thing": "edge:containers",
+					"action": "action",
+					"path": "/outbox/messages/action"
+				}
+			},
+			"message.no.proto.file.manifest": {
+				"dittoMapping": {
+					"value": "manifest",
+					"thing": "edge:containers",
+					"action": "apply",
+					"path": "/features/ContainerOrchestrator/inbox/messages/apply"
+				}
+			},
+			"message.no.proto.file.retain.correlation.id": {
+				"retainCorrelationId": true,
+				"dittoMapping": {
+					"thing": "edge:containers",
+					"action": "action",
+					"path": "/outbox/messages/action"
+				}
+			}
+		}
+	}
+}

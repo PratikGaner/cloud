@@ -1,0 +1,205 @@
+{
+	"messageMappings": {
+		"telemetry": {
+			"1": {
+                "increment.mapping": {
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/increment.mapping",
+						"path": "/outbox/messages/increment.mapping"
+					},
+                    "valueMapping": {
+                        "counter" : "++counter"
+                    }
+                },
+                "static.value.mapping": {
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/static.value.mapping",
+						"path": "/outbox/messages/static.value.mapping"
+					},
+                    "valueMapping": {
+                        "int.key" : 7,
+                        "bool.key": true,
+                        "string.key": "dummy_value"
+                    }
+				},
+               "simple.ref.mapping": {
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/simple.ref.mapping",
+						"path": "/outbox/messages/simple.ref.mapping"
+					},
+                    "valueMapping": {
+                        "int.key" : "$int_key",
+                        "bool.key": "$bool_key",
+                        "string.key": "$string_key"
+                    }
+				},
+                "static.nested.value.mapping": {
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/static.nested.value.mapping",
+						"path": "/outbox/messages/static.nested.value.mapping"
+					},
+                    "valueMapping": {
+                        "nested.object" : {
+                            "int.key" : 7,
+                            "bool.key": true,
+                            "string.key": "dummy_value"
+                        }
+                    }
+				},
+                "nested.ref.mapping": {
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/nested.ref.mapping",
+						"path": "/outbox/messages/nested.ref.mapping"
+					},
+                    "valueMapping": {
+                        "nested.object" : {
+                            "int.key" : "$int_key",
+                            "bool.key": "$bool_key",
+                            "string.key": "$string_key"
+                        }
+                    }
+				},
+                "ref.path.mapping": {
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/ref.path.mapping",
+						"path": "/outbox/messages/ref.path.mapping"
+					},
+                    "valueMapping": {
+                        "int.key" : "$keys.int",
+                        "bool.key": "$keys.bool",
+                        "string.key": "$keys.string"
+                    }
+				},
+                "field.mapping": {
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/field.mapping",
+						"path": "/outbox/messages/field.mapping"
+					},
+                    "valueMapping": {
+                        "string.key": "$string_key"
+                    },
+                    "fieldMappings": {
+                        "$string_key": {
+                            "field_value": "mapped_field_value",
+                            "default": "default_mapped_field_value"
+                        }
+                    }
+				},
+                "nested.field.mapping": {
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/nested.field.mapping",
+						"path": "/outbox/messages/nested.field.mapping"
+					},
+                    "valueMapping": {
+                        "nested.object": {
+                            "string.key": "$string_key"
+                        }
+                    },
+                    "fieldMappings": {
+                        "$string_key": {
+                            "field_value": "mapped_field_value",
+                            "default": "default_mapped_field_value"
+                        }
+                    }
+				},
+                "path.field.mapping": {
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/path.field.mapping",
+						"path": "/outbox/messages/path.field.mapping"
+					},
+                    "valueMapping": {
+                        "string.key": "$keys.string"
+                    },
+                    "fieldMappings": {
+                        "$keys.string": {
+                            "field_value": "mapped_field_value",
+                            "default": "default_mapped_field_value"
+                        }
+                    }
+				},
+                "missing.field.mapping": {
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/missing.field.mapping",
+						"path": "/outbox/messages/missing.field.mapping"
+					},
+                    "valueMapping": {
+                        "int.key": "$int_key"
+                    },
+                    "fieldMappings": {
+                        "$string_key": {
+                            "field_value": "mapped_field_value",
+                            "default": "default_mapped_field_value"
+                        }
+                    }
+				},
+                "ignore.mapping": {
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/ignore.mapping",
+						"path": "/outbox/messages/ignore.mapping"
+					},
+                    "valueMapping": {
+                        "string.key": "$string_key"
+                    },
+                    "fieldMappings": {
+                        "$string_key": {
+                            "field_value": "_"
+                        }
+                    }
+				},
+                "nested.ignore.mapping": {
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/nested.ignore.mapping",
+						"path": "/outbox/messages/nested.ignore.mapping"
+					},
+                    "valueMapping": {
+                        "nested.object": {
+                            "string.key": "$string_key"
+                        }
+                    },
+                    "fieldMappings": {
+                        "$string_key": {
+                            "field_value": "_"
+                        }
+                    }
+				},
+                "serialize.json.object": {
+                    "dittoMapping": {
+						"topic": "edge:containers/things/live/messages/serialize.json.object",
+						"path": "/outbox/messages/serialize.json.object"
+					}
+				},
+                "serialize.json.string": {
+                    "serialization": "jsonString",
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/serialize.json.string",
+						"path": "/outbox/messages/serialize.json.string"
+					}
+				},
+                "converted.value.serialize.json.string": {
+                    "serialization": "jsonString",
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/converted.value.serialize.json.string",
+						"path": "/outbox/messages/converted.value.serialize.json.string"
+					},
+                    "valueMapping": {
+                        "int.key" : "$int_key",
+                        "bool.key": "$bool_key",
+                        "string.key": "$string_key"
+                    }
+				},
+                "converted.value.serialize.bfb": {
+	    		    "protoFile": "../internal/testdata/messages/simple_message.proto",
+                    "dittoMapping": {
+						"topic": "edge:containers/things/live/messages/converted.value.serialize.bfb",
+						"path": "/outbox/messages/converted.value.serialize.bfb"
+					},
+                    "valueMapping": {
+                        "message_id": "$message_id",
+                        "text": "$text",
+                        "version": "$version"
+                    }
+				}
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+	"messageMappings": {
+		"telemetry": {
+			"6": {
+				"currentstate": {
+					"serialization": "jsonString",
+					"dittoMapping": {
+						"topic": "edge:update/things/twin/commands/modify",
+						"path": "/features/UpdateOrchestrator/properties/status/currentState"
+					}
+				},
+				"desiredstate.feedback": {
+					"protoFile": "protobuf/messages/update_status_event.proto",
+					"dittoMapping": {
+						"topic": "edge:update/things/twin/commands/modify",
+						"path": "/features/UpdateOrchestrator/properties/status/state"
+					},
+					"valueMapping": {
+						"header": {
+							"activityId": "$correlationId",
+							"deviceSequenceCounter": "++deviceSequenceCounter",
+							"apiSection": "softwareupdate",
+							"messageType": "updateStatusEvent",
+							"serialization": "protobuf",
+							"timestamp": "timestamp()",
+							"version": 1
+						},
+						"status": "$status",
+						"message": "$error.message"
+					},
+					"fieldMappings": {
+						"$status": {
+							"STARTED": 7,
+							"FINISHED_ERROR": 8,
+							"FINISHED_SUCCESS": 9,
+							"default": "_"
+						}
+					}
+				}
+			}
+		},
+		"command": {
+			"desiredstate.update": {
+				"retainCorrelationId": true,
+				"dittoMapping": {
+					"thing": "edge:update",
+					"action": "apply",
+					"path": "/features/UpdateOrchestrator/inbox/messages/apply"
+				}
+			}
+		}
+	}
+}
