@@ -1,0 +1,101 @@
+/*
+ * Copyright (c) 2022 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Apache License 2.0 which is available at
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+syntax = "proto3";
+
+import "bfb_header.proto";
+
+package bfb.softwareupdate.v1;
+
+/*
+ * Enum representing the status of an update process
+ */
+enum Status {
+
+	/*
+	 * The device can't tell the state
+	 */
+	STATUS_UNKNOWN = 0;
+
+	/*
+	 * Download has been started and is currently running
+	 */
+	STATUS_DOWNLOADING = 1;
+
+	/*
+	 * Download failed
+	 */
+	STATUS_DOWNLOAD_FAILURE = 2;
+
+	/*
+	 * Download was successful
+	 */
+	STATUS_DOWNLOAD_SUCCESS = 3;
+
+	/*
+	 * Waiting for update conditions
+	 */
+	STATUS_WAITING_FOR_UPDATE_CONDITION = 4;
+
+	/*
+	 * Timeout occurred while waiting for update conditions
+	 */
+	STATUS_TIMEOUT = 5;
+
+	/*
+	 * Device rejected update (eg. user did not accept it)
+	 */
+	STATUS_UPDATE_REJECTED = 6;
+
+	/*
+	 * Update in progress
+	 */
+	STATUS_UPDATING = 7;
+
+	/*
+	 * Update failed
+	 */
+	STATUS_UPDATE_FAILURE = 8;
+
+	/*
+	 * Update was successful
+	 */
+	STATUS_UPDATE_SUCCESS = 9;
+
+	/*
+	 * The update is awaiting approval from the backend. This step is optional and controlled by the managerApprovalRequired flag in the updateCommand
+	 */
+	STATUS_WAITING_FOR_MANAGER_APPROVAL = 10;
+
+	/*
+	 * The update has been approved by a manager and is now waiting for the specified point in time
+	 */
+	STATUS_UPDATE_SCHEDULED = 11;
+
+	/*
+	 * The update has been revoked remotely (in the backend)
+	 */
+	STATUS_UPDATE_REVOKED = 12;
+}
+
+message UpdateStatusEvent {
+
+	BfbHeader header = 1;
+
+	Status status = 2;
+
+	/*
+	 * Further information on UpdateStatus, intended for error cases
+	 */
+	string message = 3;
+}

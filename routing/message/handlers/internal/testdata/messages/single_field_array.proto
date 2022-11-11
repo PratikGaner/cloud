@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package protomsg;
+
+import "simple_message.proto";
+
+message SingleFieldArray {
+
+	//The data holder of the message
+	repeated SimpleMessage data = 1;
+}

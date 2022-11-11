@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package protomsg;
+
+message SingleFieldBoolArray {
+
+	//The data holder of the message
+	repeated bool data = 1;
+}
