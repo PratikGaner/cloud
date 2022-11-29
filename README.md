@@ -124,6 +124,9 @@ The configuration parameters shall be passed as parameters to the script or pres
 # Contributing
 If you want to contribute bug reports or feature requests, please use *GitHub Issues*.
 
+# Data privacy notice
+Please see our [data privacy notice](DATA_PRIVACY_NOTICE.md)
+
 # License and Copyright
 This program and the accompanying materials are made available under the
 terms of the Apache License 2.0 which is available at
