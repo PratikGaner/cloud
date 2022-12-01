@@ -1,4 +1,4 @@
-### Data Protection Notice
+### Privacy Information
 
 Your privacy is important to us. The following information is to provide you with all information relevant to data protection in order to be able to use the software, in a data protection compliant manner. It is provided as an information source for your solution-specific data protection and data privacy topics. This is not intended to provide and should not be relied on for legal advice.
 
