@@ -18,11 +18,15 @@ RUN echo ${VERSION}
 WORKDIR /src/cmd
 RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -o /out/cloudconnector "${LDFLAGS} ${VERSION}" ${OTHERFLAGS} .
 
+# Set executable flag
+RUN chmod +x /src/resources/*.sh
+
 # Final container
 FROM busybox AS bin
 
 # Copy binary
 COPY --from=build /out/cloudconnector /app/
+
 # Copy default protobuf messages and CA cert
 COPY --from=build /src/resources/. /app/
 
