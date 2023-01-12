@@ -65,5 +65,41 @@
 # Log file rotations max age in days, configure with parameter -logFileMaxAge (default 28).
 [ -n "${LOG_FILE_MAX_AGE+x}" ] && ARGUMENTS="$ARGUMENTS -logFileMaxAge=$LOG_FILE_MAX_AGE"
 
+# The passthrough command MQTT topic where all messages from the cloud are forwarded to on the local broker (default "cloud-to-device")
+[ -n "${PASSTHROUGH_COMMAND_TOPIC+x}" ] && ARGUMENTS="$ARGUMENTS -passthroughCommandTopic=$PASSTHROUGH_COMMAND_TOPIC"
+
+# The comma-separated list of passthrough telemetry MQTT topics the azure connector listens to on the local broker (default "device-to-cloud")
+[ -n "${PASSTHROUGH_TELEMETRY_TOPICS+x}" ] && ARGUMENTS="$ARGUMENTS -passthroughTelemetryTopics=$PASSTHROUGH_TELEMETRY_TOPICS"
+
+# A PEM encoded certificate file for cloud access
+[ -n "${CERT_FILE+x}" ] && ARGUMENTS="$ARGUMENTS -cert=$CERT_FILE"
+
+# A PEM encoded unencrypted private key file for cloud access
+[ -n "${KEY_FILE+x}" ] && ARGUMENTS="$ARGUMENTS -key=$KEY_FILE"
+
+# A PEM encoded local broker CA certificates file
+[ -n "${LOCAL_CA_CERT_FILE+x}" ] && ARGUMENTS="$ARGUMENTS -localCACert=$LOCAL_CA_CERT_FILE"
+
+#  A PEM encoded certificate file for local broker
+[ -n "${LOCAL_CERT_FILE+x}" ] && ARGUMENTS="$ARGUMENTS -localCert=$LOCAL_CERT_FILE"
+
+#  A PEM encoded unencrypted private key file for local broker
+[ -n "${LOCAL_KEY_FILE+x}" ] && ARGUMENTS="$ARGUMENTS -localKey=$LOCAL_KEY_FILE"
+
+#  The validity period for the generated SAS token for device authentication. Should be a positive integer number followed by a unit suffix, such as '300m', '1h', etc. Valid time units are 'm' (minutes), 'h' (hours), 'd' (days) (default "1h")
+[ -n "${SAS_TOKEN_VALIDITY+x}" ] && ARGUMENTS="$ARGUMENTS -sasTokenValidity=$SAS_TOKEN_VALIDITY"
+
+#  Path to the device file or the unix socket to access the TPM2
+[ -n "${TPM_DEVICE+x}" ] && ARGUMENTS="$ARGUMENTS -tpmDevice=$TPM_DEVICE"
+
+#  TPM2 storage root key handle
+[ -n "${TPM_HANDLE+x}" ] && ARGUMENTS="$ARGUMENTS -tpmHandle=$TPM_HANDLE"
+
+#  Private part of TPM2 key file
+[ -n "${TPM_KEY+x}" ] && ARGUMENTS="$ARGUMENTS -tpmKey=$TPM_KEY"
+
+#  Public part of TPM2 key file
+[ -n "${TPM_KEY_PUB+x}" ] && ARGUMENTS="$ARGUMENTS -tpmKeyPub=$TPM_KEY_PUB"
+
 echo $PWD/cloudconnector $ARGUMENTS
 nohup $PWD/cloudconnector $ARGUMENTS >/dev/null 2>&1 &
